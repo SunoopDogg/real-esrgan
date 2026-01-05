@@ -1,24 +1,24 @@
 services:
-  kkalssam-python-template:
+  real-esrgan:
     build:
       context: .
     image: trixie-slim:uv-nvm
-    container_name: kkalssam-python-template
-    working_dir: /root/kkalssam-python-template
+    container_name: real-esrgan
+    working_dir: /root/real-esrgan
     environment:
       - DISPLAY=${DISPLAY:-host.docker.internal:0}
       - QT_X11_NO_MITSHM=1
     volumes:
-      - .:/root/kkalssam-python-template
+      - .:/root/real-esrgan
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
     ipc: host
     tty: true
 
-  kkalssam-python-template-gpu:
+  real-esrgan-gpu:
     extends:
-      service: kkalssam-python-template
-    container_name: kkalssam-python-template-gpu
+      service: real-esrgan
+    container_name: real-esrgan-gpu
     deploy:
       resources:
         reservations:
